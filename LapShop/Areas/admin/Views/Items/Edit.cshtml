@@ -1,0 +1,215 @@
+﻿@model TbItem
+
+
+
+<div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Form elements </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+                 <div class="col-12 grid-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">@ResAdmin.lblItemEditForm</h4>
+                            <form class="form-sample" method="post" enctype="multipart/form-data"
+                                asp-controller="Items" asp-action="Save" role="form">
+
+                                <input asp-for="ItemId" type="hidden" />
+                                <input asp-for="CreatedBy" type="hidden" />
+                                <input asp-for="CreatedDate" type="hidden" />
+                                <input asp-for="ImageName" type="hidden" />
+                                <input asp-for="CurrentState" type="hidden" />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="card-description"> Main Data </p>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblItemName</label>
+                                            <div class="col-sm-9">
+                                            <input asp-for="ItemName" type="text" class="form-control" />
+                                            <span asp-validation-for="ItemName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="card-description"> Hardware data </p>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblGPU</label>
+                                            <div class="col-sm-9">
+                                            <input asp-for="Gpu" type="text" class="form-control" />
+                                            <span asp-validation-for="Gpu" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblCategoryName</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control form-control-lg"
+                                                   asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.lstCategories,"CategoryId","CategoryName"))"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblProcessor</label>
+                                            <div class="col-sm-9">
+                                                <input asp-for="Processor" type="text" class="form-control" />
+                                                <span asp-validation-for="Processor" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblOs</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control form-control-lg"
+                                                    asp-for="OsId" asp-items="@(new SelectList(ViewBag.lstTypes,"ItemTypeId", "ItemTypeName"))"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblHardDisk</label>
+                                            <div class="col-sm-9">
+                                                <input asp-for="HardDisk" type="text" class="form-control" />
+                                                <span asp-validation-for="HardDisk" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">@ResAdmin.lblItemType</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control form-control-lg"
+                                                    asp-for="ItemTypeId"  asp-items="@(new SelectList(ViewBag.lstOS, "OsId", "OsName"))"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblRamSize</label>
+                                            <div class="col-sm-9">
+                                                <input asp-for="RamSize" type="text" class="form-control" />
+                                                <span asp-validation-for="RamSize" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblSalesPrice</label>
+                                            <div class="col-sm-9">
+                                                <input asp-for="SalesPrice" type="text" class="form-control" />
+                                                <span asp-validation-for="SalesPrice" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblScreenReslution</label>
+                                            <div class="col-sm-9">
+                                                <input asp-for="ScreenReslution" type="text" class="form-control" />
+                                                <span asp-validation-for="ScreenReslution" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblPurchasePrice</label>
+                                            <div class="col-sm-9">
+                                                <input asp-for="PurchasePrice" type="text" class="form-control" />
+                                                <span asp-validation-for="PurchasePrice" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblScreenSize</label>
+                                            <div class="col-sm-9">
+                                                <input asp-for="ScreenSize" type="text" class="form-control" />
+                                                <span asp-validation-for="ScreenSize" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@ResAdmin.lblWeight</label>
+                                            <div class="col-sm-9">
+                                                <input asp-for="Weight" type="text" class="form-control" />
+                                                <span asp-validation-for="Weight" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>File upload</label>
+                                                <input asp-for="ImageName" type="file" name="Files"
+                                                     class="form-control" placeholder="@ResAdmin.lblImage"
+                                                     onchange="Upload.UploadDefaultImg(event)" accept=".jpg, .jpeg, .png, ,.gif">
+                                            <div class="input-group col-xs-12">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="card-description">@ResAdmin.lblImagePreview</p>
+                                        <div class="form-group row">
+                                            <div class="col-sm-12">
+                                                <span id="tbImgName"></span>
+                                                <div id="tbImgSrc">
+                                                    <img src="/Uploads/Items/@Model.ImageName" style="width:200px;height: 200px;" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                                        <button class="btn btn-light">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+          </div>
+
+
+@section Scripts
+{
+    <!-- M_adding this file and adding [AutoValidateAntiforgeryToken] on save controller, mean we activate client side validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        var Upload = {
+            UploadDefaultImg: function (e) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    CourseMediaImgName = file.name;
+                    CourseMediaImgBase64 = reader.result.slice(reader.result.indexOf('base64,') + 7);
+                    $("#tbImgName").html(file.name)
+                    $("#tbImgSrc").html(`<img class="thumbnail" src = "${reader.result}"  style = "width: 200px;height: 200px;border-radius: 5px;border: 1px solid #d9d9d9;padding: 1px;" />`)
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+}

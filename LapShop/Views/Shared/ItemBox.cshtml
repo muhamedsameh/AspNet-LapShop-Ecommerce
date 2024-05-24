@@ -1,0 +1,38 @@
+﻿@model VwItem
+
+<div class="img-wrapper">
+    <div class="front">
+        <a asp-controller="Items" asp-action="ItemDetails" asp-route-id="@Model.ItemId">
+            <img class="img-fluid blur-up lazyload bg-img"
+                 src="~/Uploads/Items/@Model.ImageName" alt="">
+        </a>
+    </div>
+    <div class="cart-info cart-wrap">
+        <a asp-controller="Order" asp-action="AddToCart" asp-route-itemId="@Model.ItemId" as title="Add to Wishlist" tabindex="0">
+            <i class="ti-heart"
+               aria-hidden="true"></i>
+        </a>
+        <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View" tabindex="0">
+            <i class="ti-search" aria-hidden="true"></i>
+        </a>
+        <a href="compare.html" title="Compare" tabindex="0">
+            <i class="ti-reload"
+               aria-hidden="true"></i>
+        </a>
+    </div>
+    <a class="add-button" 
+        asp-controller="Order" asp-action="AddToCart"
+        asp-route-itemId="@Model.ItemId">
+        add to
+        cart
+    </a>
+</div>
+<div class="product-detail">
+    <div class="rating">
+        <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+    </div>
+    <a asp-controller="Items" asp-action="ItemDetails" asp-route-id="@Model.ItemId">
+        <h6>@Model.ItemName</h6>
+    </a>
+    <h4>$@Model.SalesPrice</h4>
+</div>

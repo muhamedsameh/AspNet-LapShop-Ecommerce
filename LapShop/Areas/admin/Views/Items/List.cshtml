@@ -1,0 +1,115 @@
+﻿@model List<VwItem>
+
+
+@section Styles
+{
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/assets/Backend/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <!-- End plugin css for this page -->
+}
+
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title"> Data table </h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Data table</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Data table</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">@ResAdmin.lblShowHomePage</label>
+                                <select clas="form-control form-control-lg" asp-items="@(new SelectList(ViewBag.lstCategories,"CategoryId","CategoryName"))"
+                                  onchange="Search(this)">
+                                </select>
+                                
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            @{
+                                // if current loged in user is admin role
+                                if (User.IsInRole("Admin"))
+                                {
+                                    <a href="/Admin/Items/Edit" class="btn btn-success btn-fw">New</a>
+                                }
+                            }
+                            <table id="order-listing" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>@ResAdmin.lblImage</th>
+                                        <th>@ResAdmin.lblItemName</th>
+                                        <th>@ResAdmin.lblCategoryName</th>
+                                        <th>@ResAdmin.lblItemType</th>
+                                        <th>@ResAdmin.lblPrice</th>
+                                        <th>@ResGeneral.lblActions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr style="margin:0px;padding:0px;">
+
+                                            <td class="col-md-8">
+                                                <img src="/Uploads/Items/@item.ImageName" />
+                                            </td>
+                                            <td class="col-md-8">@item.ItemName</td>
+                                            <td class="col-md-8">@item.CategoryName</td>
+                                            <td class="col-md-8">@item.ItemTypeName</td>
+                                            <td class="col-md-8">@item.SalesPrice</td>
+                                            
+                                            <td class="col-md-4" style="margin:0px;padding:0px;">
+                                                <a style="height:max-content"
+                                                   asp-controller="Items" asp-action="Edit" asp-route-itemId="@item.ItemId"
+                                                   class="btn btn-info btn-fw">Edit</a>
+
+
+                                                <a asp-controller="Items" asp-action="Delete" asp-route-itemId="@item.ItemId"
+                                                   class="btn btn-danger btn-fw"
+                                                   onclick="return confirm(" Are you sure");">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- main-panel ends -->
+</div>
+
+@section Scripts
+{
+    <!-- plugins:js -->
+    <script src="~/Admin/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page -->
+    <script src="~/Admin/js/data-table.js"></script>
+    <!-- End custom js for this page -->
+
+    <script>
+        function Search(dropDown){
+            var id = $(dropDown).val();
+            window.location.href = "/admin/Items/Search?id=" + id;
+        }
+    </script>
+}
+
+
