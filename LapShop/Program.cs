@@ -6,6 +6,10 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<LapShopContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultValue")));
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -41,7 +45,10 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 
-
+builder.Services.AddSwaggerGen(options =>
+{
+    // options
+});
 
 
 var app = builder.Build();
@@ -52,6 +59,10 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
