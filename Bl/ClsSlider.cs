@@ -3,64 +3,66 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LapShop.Bl
 {
-    public interface IOS
+    public interface ISlider
     {
-        public List<TbO> GetAll();
-        public TbO GetByID(int id);
-        public bool Save(TbO os);
+        public List<TbSlider> GetAll();
+        public TbSlider GetByID(int id);
+        public bool Save(TbSlider slider);
         public bool Delete(int id);
     }
-    public class ClsOS : IOS
+
+    public class ClsSlider : ISlider
     {
         LapShopContext context;
 
-        public ClsOS(LapShopContext context)
+        public ClsSlider(LapShopContext context)
         {
             this.context = context;
         }
-        public List<TbO> GetAll()
+
+        public List<TbSlider> GetAll()
         {
             try
             {
-                var lstOSs = context.TbOs.Where(a => a.CurrentState == 1).ToList();
-                return lstOSs;
+                var lstSliders = context.TbSliders
+                    .Where(a => a.CurrentState == 1).ToList();
+                return lstSliders;
             }
             catch
             {
-                return new List<TbO>();
+                return new List<TbSlider>();
             }
         }
-        public TbO GetByID(int id)
+        public TbSlider GetByID(int id)
         {
             try
             {
-
-                var os = context.TbOs.FirstOrDefault(a => a.OsId == id && a.CurrentState == 1);
-                return os;
+                var slider = context.TbSliders.FirstOrDefault(a => a.SliderId == id && a.CurrentState == 1);
+                return slider;
             }
             catch
             {
-                return new TbO();
+                return new TbSlider();
             }
 
         }
-        public bool Save(TbO os)
+        public bool Save(TbSlider slider)
         {
 
             try
             {
 
-                if (os.OsId == 0)
+                if (slider.SliderId == 0)
                 {
-                    os.CreatedBy = "mo";
-                    os.CreatedDate = DateTime.Now;
-                    context.TbOs.Add(os);
+                    slider.CreatedBy = "mo";
+                    slider.CreatedDate = DateTime.Now;
+                    context.TbSliders.Add(slider);
                 }
                 else
                 {
-                    os.UpdatedDate = DateTime.Now;
-                    os.UpdatedBy = "ho";
-                    context.Entry(os).State = EntityState.Modified;
+                    slider.UpdatedDate = DateTime.Now;
+                    slider.UpdatedBy = "Mo";
+                    context.Entry(slider).State = EntityState.Modified;
                 }
                 context.SaveChanges();
                 return true;
@@ -71,19 +73,17 @@ namespace LapShop.Bl
             }
 
         }
-
         public bool Delete(int id)
         {
             try
             {
-                var os = GetByID(id);
+                var slider = GetByID(id);
 
-                if (os == null)
+                if (slider == null)
                     return false;
 
 
-
-                os.CurrentState = 0;
+                slider.CurrentState = 0;
                 context.SaveChanges();
                 return true;
             }
