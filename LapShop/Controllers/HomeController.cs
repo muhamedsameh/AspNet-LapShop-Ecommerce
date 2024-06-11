@@ -7,9 +7,12 @@ namespace LapShop.Controllers
     public class HomeController : Controller
     {
         IItems oClsItems;
-        public HomeController(IItems item)
+        ISlider oClsSliders;
+        public HomeController(IItems item, ISlider slider)
         {
             oClsItems = item;
+            oClsSliders = slider;
+
         }
         public IActionResult Index()
         {
@@ -19,6 +22,9 @@ namespace LapShop.Controllers
             vm.lstRecommendedItems = allData.Take(10).ToList();
             vm.lstNewItems = allData.Take(4).ToList();
             vm.lstFreeDeliveryItems = allData.Take(4).ToList();
+
+            var sliders = oClsSliders.GetAll().Take(4).ToList();
+            vm.lstSliderItems = sliders;
 
             return View(vm);
         }
