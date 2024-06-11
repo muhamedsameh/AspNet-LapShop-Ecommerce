@@ -27,6 +27,7 @@ builder.Services.AddScoped<IItems, ClsItems>();
 builder.Services.AddScoped<IItemTypes, ClsItemType>();
 builder.Services.AddScoped<ICategories, ClsCategories>();
 builder.Services.AddScoped<IItemImages, ClsItemImages>();
+builder.Services.AddScoped<ISlider, ClsSlider>();
 //builder.Services.AddScoped<VmHomePage, VmHomePage>();
 
 builder.Services.AddSession();
