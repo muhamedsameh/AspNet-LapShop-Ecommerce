@@ -2,42 +2,26 @@
 <!-- Home slider -->
 <section class="p-0 layout-7">
     <div class="slide-1 home-slider">
-        <div>
-            <div class="home text-left">
-                <img src="~/Mo/slider/slider.jpg" alt="" class="bg-img blur-up lazyload">
-                <div class="container-fluid custom-container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="slider-contain">
-                                <div>
-                                    <h4>Headsets for all styles</h4>
-                                    <h1>Starting $19</h1>
-                                    <a href="#" class="btn btn-solid">shop now</a>
+        @foreach (var slider in Model.lstSliderItems)
+        {
+            <div>
+                <div class="home text-center">
+                    <img src="~/Uploads/Slider/@slider.ImageName" alt="@slider.ImageName" class="bg-img blur-up lazyload">
+                    <div class="container-fluid custom-container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="slider-contain">
+                                    <div>
+                                        <h4>@slider.Description</h4>
+                                        <h1>@slider.Title</h1>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <div class="home text-center">
-                <img src="~/Mo/slider/slider2.jpg" alt="" class="bg-img blur-up lazyload">
-                <div class="container-fluid custom-container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="slider-contain">
-                                <div>
-                                    <h4>Furnishing deals</h4>
-                                    <h1>Up to 70% off</h1>
-                                    <a href="#" class="btn btn-solid">shop now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </section>
 <!-- Home slider end -->
