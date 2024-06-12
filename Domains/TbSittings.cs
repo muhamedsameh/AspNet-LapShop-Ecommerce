@@ -23,6 +23,8 @@ namespace Domains
         public string MiddlePanner {  get; set; }
         public string LastPanner { get; set; }
         public string HomeBackgroundImgName { get; set; }
+        public string UpdatedBy { get; set; }
+        public DateTime UpdatedDate { get; set; }
 
     }
 }
