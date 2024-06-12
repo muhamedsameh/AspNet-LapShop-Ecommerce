@@ -8,7 +8,7 @@ namespace LapShop.Bl
 {
     public interface ISittings
     {
-        public List<TbSittings> GetAll();
+        public TbSittings GetAll();
         public bool Save(TbSittings sittings);
     }
 
@@ -20,17 +20,17 @@ namespace LapShop.Bl
             this.context = context;
         }
 
-        public List<TbSittings> GetAll()
+        public TbSittings GetAll()
         {
             try
             {
                 // one record
-                var lstSittings = context.TbSittings.ToList();
-                return lstSittings;
+                var Sittings = context.TbSittings.FirstOrDefault();
+                return Sittings;
             }
             catch
             {
-                return new List<TbSittings>();
+                return new TbSittings();
             }
 
         }
