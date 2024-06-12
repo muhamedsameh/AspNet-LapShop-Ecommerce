@@ -17,6 +17,12 @@ namespace Domains
         public string InstaLink { get; set; }
         public string YoutubeLink { get; set;}
         public string LinkedinLink { get; set;}
+        public string Location { get; set; }
+        public string phoneNumber { get; set; }
+        public string Email { get; set; }
         public string MiddlePanner {  get; set; }
+        public string LastPanner { get; set; }
+        public string HomeBackgroundImgName { get; set; }
+
     }
 }
