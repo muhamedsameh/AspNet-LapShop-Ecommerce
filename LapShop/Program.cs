@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllersWithViews();
+
+#region Entity Framework
 builder.Services.AddDbContext<LapShopContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultValue")));
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
@@ -19,17 +21,22 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     //options.Password.RequireLowercase = true;
     //options.Password.RequireDigit = true;
     options.User.RequireUniqueEmail = true;
-}).AddEntityFrameworkStores<LapShopContext>();
+}).AddEntityFrameworkStores<LapShopContext>(); 
+#endregion
 
 
+#region Custom Services
 builder.Services.AddScoped<IOS, ClsOS>();
 builder.Services.AddScoped<IItems, ClsItems>();
 builder.Services.AddScoped<IItemTypes, ClsItemType>();
 builder.Services.AddScoped<ICategories, ClsCategories>();
 builder.Services.AddScoped<IItemImages, ClsItemImages>();
 builder.Services.AddScoped<ISlider, ClsSlider>();
-//builder.Services.AddScoped<VmHomePage, VmHomePage>();
+builder.Services.AddScoped<ISittings, ClsSittings>();
+//builder.Services.AddScoped<VmHomePage, VmHomePage>(); 
+#endregion
 
+#region Session and Cokkies
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
@@ -44,12 +51,15 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
     options.SlidingExpiration = true;
 });
+#endregion
 
 
+#region Swagger UI
 builder.Services.AddSwaggerGen(options =>
 {
     // options
-});
+}); 
+#endregion
 
 
 var app = builder.Build();
