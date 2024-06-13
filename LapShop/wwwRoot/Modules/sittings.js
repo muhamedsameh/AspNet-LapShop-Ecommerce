@@ -2,14 +2,17 @@ var ClsSittings = {
     GetAll: function () {
         Helper.AjaxCallGet("https://localhost:7079/api/Sitttings", {}, "json",
             function (data) {
-                console.log(data);
-                console.log(data.data);
-                console.log(data.FacebookLink);
-                $("#lnkFacebook").attr("href", data.data.FacebookLink);
-                $("#lnkYoutupe").attr("href", data.data.lnkYoutupe);
-                $("#lnkX").attr("href", data.data.XLink);
-                $("#lnkInsta").attr("href", data.data.InstaLink);
-                $("#lnkLinkedin").attr("href", data.data.LinkedinLink);
+
+                $("#lnkFacebook").attr("href", data.facebookLink);
+                $("#lnkYoutupe").attr("href", data.youtubeLink);
+                $("#lnkX").attr("href", data.xLink);
+                $("#lnkInsta").attr("href", data.instaLink);
+                $("#lnkLinkedin").attr("href", data.linkedinLink);
+
+                document.getElementById("phonenumber").innerText = data.phoneNumber;
+                document.getElementById("location").innerText = data.location;
+                document.getElementById("email").innerText = data.email;
+                document.getElementById("dis").innerText = data.discription.replace(/\./g, '.\n'); // add new line before each dot.
 
             }, function () { console.log("failed"); })
     }
