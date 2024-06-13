@@ -301,7 +301,7 @@
                         <div class="header-contact">
                             <ul>
                                 <li>Welcome to Our LapShop store</li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: <span id="phonenumber">000-000-000</span></li>
                             </ul>
                         </div>
                     </div>
@@ -463,17 +463,17 @@
                         </div>
                         <div class="footer-contant">
                             <div class="footer-logo"><img src="~/FrontEnd/images/icon/logo/18.png" alt=""></div>
-                            <p>
+                            <p id="dis">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                             </p>
                             <div class="footer-social">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" target="_blank" id="lnkFacebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" target="_blank" id="lnkYoutupe"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" target="_blank" id="lnkX"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" target="_blank" id="lnkInsta"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" target="_blank" id="lnkLinkedin" ><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -518,11 +518,10 @@
                             <div class="footer-contant">
                                 <ul class="contact-list">
                                     <li>
-                                        <i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store India 345-659
+                                        <i class="fa fa-map-marker"></i><span id="location">location here...</span>
                                     </li>
-                                    <li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
-                                    <li><i class="fa fa-envelope-o"></i>Email Us: <a href="#">Support@Fiot.com</a></li>
-                                    <li><i class="fa fa-fax"></i>Fax: 123456</li>
+                                    <li><i class="fa fa-phone"></i> Call Us Now: <span id="phonenumber">000-000-000</span></li>
+                                    <li><i class="fa fa-envelope-o"></i>Email Us: <a id="email" href="#">Support@Fiot.com</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1605,7 +1604,13 @@
     <!-- Theme js-->
     <script src="~/FrontEnd/js/script.js"></script>
 
+    <script src="~/modules/Helper.js"></script>
+    <script src="~/modules/sittings.js"></script>
+
+
     @RenderSection("scripts", required:false)
+
+    
 
     @* <script>
         $(window).on('load', function () {
