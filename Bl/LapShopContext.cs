@@ -58,6 +58,7 @@ public partial class LapShopContext : IdentityDbContext<ApplicationUser>
 
     public virtual DbSet<VwSalesInvoice> VwSalesInvoices { get; set; }
     public virtual DbSet<TbSittings> TbSittings { get; set; }
+    public virtual DbSet<TbPages> TbPages { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -337,6 +338,13 @@ public partial class LapShopContext : IdentityDbContext<ApplicationUser>
 
             entity.Property(e => e.DelivryDate).HasColumnType("datetime");
             entity.Property(e => e.InvoiceDate).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<TbPages>(entity =>
+        {
+            entity.HasKey(e => e.PageId);
+
+            entity.Property(e => e.Title).HasMaxLength(500);
         });
 
         OnModelCreatingPartial(modelBuilder);
