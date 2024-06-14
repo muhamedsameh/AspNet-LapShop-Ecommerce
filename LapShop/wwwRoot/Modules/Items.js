@@ -1,20 +1,29 @@
-﻿
-
-var ClsItems = {
+﻿var ClsItems = {
     GetAll: function () {
         Helper.AjaxCallGet("https://localhost:7079/api/items", {}, "json",
             function (data) {
-                var htmlAllItems = "";
+                $('#pagination-container').pagination({
+                    dataSource: data.data,
+                    pageSize: 60,
+                    callback: function (data, pagination) {
 
-                for (var i = 0; i < data.data.length; i++) {
-                    var htmlItem = ClsItems.DrawItem(data.data[i]);
-                    htmlAllItems += htmlItem;
-                }
-
-                // change inner html of itemArea elemnt
-                $("#ItemsArea").html(htmlAllItems);
-
+                        var html = ClsItems.Template(data);
+                        $("#ItemsArea").html(html);
+                    }
+                })
             }, function () { console.log("failed"); })
+    },
+    Template: function (data) {
+
+        var onePageItemsHTML = "";
+
+        // draw each item,then add to onePageItemsHTML
+        for (var i = 0; i < data.length; i++) {
+            var htmlItem = ClsItems.DrawItem(data[i]);
+            onePageItemsHTML += htmlItem;
+        }
+
+        return onePageItemsHTML;
     },
     DrawItem: function (item) {
 
@@ -57,5 +66,5 @@ var ClsItems = {
         </div>`
 
         return rawData;
-    }
+    },
 }
