@@ -1,3 +1,4 @@
+using Bl;
 using LapShop.Bl;
 using LapShop.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -33,7 +34,7 @@ builder.Services.AddScoped<ICategories, ClsCategories>();
 builder.Services.AddScoped<IItemImages, ClsItemImages>();
 builder.Services.AddScoped<ISlider, ClsSlider>();
 builder.Services.AddScoped<ISittings, ClsSittings>();
-//builder.Services.AddScoped<VmHomePage, VmHomePage>(); 
+builder.Services.AddScoped<IPages, ClsPages>();
 #endregion
 
 #region Session and Cokkies

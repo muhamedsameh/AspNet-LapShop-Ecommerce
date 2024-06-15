@@ -1,0 +1,45 @@
+﻿ @model TbPages;
+  
+<!-- breadcrumb start -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>about us</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">About us</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb end -->
+<!-- about section start -->
+<section class="about-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="banner-section">
+                    <img src="~/Uploads/Pages/@Model.ImgName"
+                         class="img-fluid blur-up lazyload" alt="">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <h2>
+                    @Model.Title
+                </h2>
+                <p>
+                    @Html.Raw(Model.Description)
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- about section end -->
