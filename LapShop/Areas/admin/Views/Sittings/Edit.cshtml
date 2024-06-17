@@ -1,0 +1,157 @@
+﻿@model TbSittings
+
+<div class="content-wrapper" data-select2-id="12">
+            <div class="page-header">
+              <h3 class="page-title"> Form elements </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row" data-select2-id="11">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Website Sittings</h4>
+                    <form class="form-sample" method="post" enctype="multipart/form-data"
+                          asp-controller="Sittings" asp-action="Save" role="form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="card-description">Basic Info</p>
+
+                                <div class="form-group">
+                                    <label for="websiteName">Website Name</label>
+                                    <input asp-for="WebsiteName" type="text" required class="form-control form-control-sm" id="websiteName" placeholder="Enter website name">
+                                    <span asp-validation-for="WebsiteName" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input asp-for="Description" type="text" required class="form-control form-control-sm" id="description" placeholder="Enter website description">
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+
+                                <p class="card-description">Social Media Links</p>
+
+                                <div class="form-group">
+                                    <label for="facebookLink">Facebook</label>
+                                    <input asp-for="FacebookLink" type="url" required class="form-control form-control-sm" id="facebookLink" placeholder="Enter Facebook link">
+                                    <span asp-validation-for="FacebookLink"  class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="instaLink">Instagram</label>
+                                    <input asp-for="InstaLink" type="url" required class="form-control form-control-sm" id="instaLink" placeholder="Enter Instagram link">
+                                    <span asp-validation-for="InstaLink" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="twitterLink">Twitter</label>
+                                    <input asp-for="XLink" type="url" required class="form-control form-control-sm" id="twitterLink" placeholder="Enter Twitter link">
+                                    <span asp-validation-for="XLink" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="linkedinLink">LinkedIn</label>
+                                    <input asp-for="LinkedinLink" type="url" required class="form-control form-control-sm" id="linkedinLink" placeholder="Enter LinkedIn link">
+                                    <span asp-validation-for="LinkedinLink" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="youtubeLink">YouTube</label>
+                                    <input asp-for="YoutubeLink" type="url" required class="form-control form-control-sm" id="youtubeLink" placeholder="Enter YouTube link">
+                                    <span asp-validation-for="YoutubeLink" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <p class="card-description"> Contact Info </p>
+                                <div class="form-group">
+                                    <label for="Email"> Contact Email Address </label>
+                                    <input asp-for="Email" type="email" required class="form-control form-control-sm" id="Email" placeholder="Enter email address">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phoneNumber"> Contact Phone Number </label>
+                                    <input asp-for="PhoneNumber" type="text" required class="form-control form-control-sm" id="PhoneNumber" placeholder="Enter phone number">
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Location"> Address </label>
+                                    <input asp-for="Location" type="text" required class="form-control form-control-sm" id="Location" placeholder="Enter address">
+                                    <span asp-validation-for="Location" class="text-danger"></span>
+                                </div>
+
+                                <!-- fields -->
+                                <p class="card-description"> Files </p>
+
+                                <div class="form-group">
+                                    <label for="LogoFile"> Logo </label>
+                                    <div class="input-group">
+                                        <input  name="LogoFile" type="file" class="file-upload-default" id="LogoFile">
+                                        <input type="text" class="form-control file-upload-info form-control-sm" disabled placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="MiddlePannerFile"> Middle Banner </label>
+                                    <div class="input-group">
+                                        <input  name="middlePannerFile" type="file" class="file-upload-default" id="MiddlePannerFile">
+                                        <input type="text" class="form-control file-upload-info form-control-sm" disabled placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="LastPannerFile"> Last Banner </label>
+                                    <div class="input-group">
+                                        <input  name="lastPannerFile" type="file" class="file-upload-default" id="LastPannerFile">
+                                        <input type="text" class="form-control file-upload-info form-control-sm" disabled placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="HomeBackgroundFile"> Home Background </label>
+                                    <div class="input-group">
+                                        <input  name="homeBackgroundFile" type="file" class="file-upload-default" id="HomeBackgroundFile">
+                                        <input type="text" class="form-control file-upload-info form-control-sm" disabled placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-gradient-primary me-2">Update</button>
+                                <button class="btn btn-light">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+@section Scripts
+{
+    <!-- M_adding this file and adding [AutoValidateAntiforgeryToken] on save controller, mean we activate client side validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+    
+    <!-- Custom js for this page -->
+    <script src="~/Admin/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+}
