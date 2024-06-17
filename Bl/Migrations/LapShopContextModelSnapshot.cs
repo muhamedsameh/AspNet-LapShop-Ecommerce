@@ -99,7 +99,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TbSittings");
+                    b.ToTable("TbSittings", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.ApplicationUser", b =>
@@ -268,7 +268,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("TbCategories");
+                    b.ToTable("TbCategories", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.TbCustomer", b =>
@@ -286,7 +286,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("CustomerId");
 
-                    b.ToTable("TbCustomers");
+                    b.ToTable("TbCustomers", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.TbItem", b =>
@@ -378,7 +378,7 @@ namespace LapShop.Migrations
 
                     b.HasIndex(new[] { "OsId" }, "IX_TbItems_OsId");
 
-                    b.ToTable("TbItems");
+                    b.ToTable("TbItems", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.TbItemDiscount", b =>
@@ -425,7 +425,7 @@ namespace LapShop.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("TbItemImages");
+                    b.ToTable("TbItemImages", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.TbItemType", b =>
@@ -462,7 +462,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("ItemTypeId");
 
-                    b.ToTable("TbItemTypes");
+                    b.ToTable("TbItemTypes", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.TbO", b =>
@@ -503,7 +503,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("OsId");
 
-                    b.ToTable("TbOs");
+                    b.ToTable("TbOs", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.TbPurchaseInvoice", b =>
@@ -529,7 +529,7 @@ namespace LapShop.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("TbPurchaseInvoices");
+                    b.ToTable("TbPurchaseInvoices", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.TbPurchaseInvoiceItem", b =>
@@ -560,7 +560,7 @@ namespace LapShop.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("TbPurchaseInvoiceItems");
+                    b.ToTable("TbPurchaseInvoiceItems", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.TbSalesInvoice", b =>
@@ -608,7 +608,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("InvoiceId");
 
-                    b.ToTable("TbSalesInvoices");
+                    b.ToTable("TbSalesInvoices", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.TbSalesInvoiceItem", b =>
@@ -642,7 +642,7 @@ namespace LapShop.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("TbSalesInvoiceItems");
+                    b.ToTable("TbSalesInvoiceItems", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.TbSlider", b =>
@@ -703,7 +703,7 @@ namespace LapShop.Migrations
                     b.HasKey("SupplierId")
                         .HasName("PK_TbSupplier");
 
-                    b.ToTable("TbSuppliers");
+                    b.ToTable("TbSuppliers", (string)null);
                 });
 
             modelBuilder.Entity("LapShop.Models.VwItem", b =>

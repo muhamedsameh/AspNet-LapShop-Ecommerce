@@ -17,7 +17,7 @@ namespace Domains
         [StringLength(100, ErrorMessage = "Website Name cannot exceed 100 characters")]
         public string WebsiteName { get; set; }
 
-        [Required(ErrorMessage = "Logo is required")]
+        [ValidateNever]
         public string Logo { get; set; }
 
         [Required(ErrorMessage = "Description is required")]
@@ -51,13 +51,13 @@ namespace Domains
         [EmailAddress(ErrorMessage = "Please enter a valid email address")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Middle banner is required")]
+        [ValidateNever]
         public string MiddlePanner { get; set; }
 
-        [Required(ErrorMessage = "Last banner is required")]
+        [ValidateNever]
         public string LastPanner { get; set; }
 
-        [Required(ErrorMessage = "Home background image is required")]
+        [ValidateNever]
         public string HomeBackgroundImgName { get; set; }
 
         [ValidateNever]
