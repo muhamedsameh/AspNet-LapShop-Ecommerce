@@ -1,0 +1,87 @@
+﻿@model List<TbSlider>
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title"> Sliders table </h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sliders table</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sliders table</h4>
+                    
+                    <div class="row">
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <a class="btn btn-success btn-fw" href="/admin/Sliders/Edit">Add New</a>
+                        </div>
+                        <div class="col-12">
+                            <table id="order-listing" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>@ResAdmin.lblImage</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>@ResGeneral.lblActions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var slider in Model)
+                                    {
+                                        <tr style="margin:0px;padding:0px;">
+
+                                            <td class="col-md-8">
+                                                <img src="~/Uploads/Sliders/@slider.ImageName" alt="@slider.ImageName" />
+                                            </td>
+                                            <td class="col-md-8">@slider.Title</td>
+                                            <td class="col-md-8">@slider.Description</td>
+                                            <td class="col-md-4" style="margin:0px;padding:0px;">
+                                                <a style="height:max-content"
+                                                   asp-controller="Sliders" asp-action="Edit" asp-route-sliderId="@slider.SliderId"
+                                                   class="btn btn-info btn-fw">Edit</a>
+
+                                                <a asp-controller="Sliders" asp-action="Delete" asp-route-sliderId="@slider.SliderId"
+                                                   class="btn btn-danger btn-fw"
+                                                   onclick="return confirm(" Are you sure");">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- main-panel ends -->
+</div>
+
+
+@section Styles
+{
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <!-- End plugin css for this page -->
+}
+
+@section Scripts
+{
+    <!-- plugins:js -->
+    <script src="~/Admin/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page -->
+    <script src="~/Admin/js/data-table.js"></script>
+    <!-- End custom js for this page -->
+}
