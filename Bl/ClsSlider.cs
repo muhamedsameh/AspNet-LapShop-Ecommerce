@@ -54,6 +54,7 @@ namespace LapShop.Bl
 
                 if (slider.SliderId == 0)
                 {
+                    slider.CurrentState = 1;
                     slider.CreatedBy = "mo";
                     slider.CreatedDate = DateTime.Now;
                     context.TbSliders.Add(slider);

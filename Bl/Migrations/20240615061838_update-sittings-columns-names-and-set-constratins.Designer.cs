@@ -4,6 +4,7 @@ using LapShop.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LapShop.Migrations
 {
     [DbContext(typeof(LapShopContext))]
-    partial class LapShopContextModelSnapshot : ModelSnapshot
+    [Migration("20240615061838_update-sittings-columns-names-and-set-constratins")]
+    partial class updatesittingscolumnsnamesandsetconstratins
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,56 +24,6 @@ namespace LapShop.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Domains.TbPages", b =>
-                {
-                    b.Property<int>("PageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PageId"));
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("CurrentState")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImgName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MetaDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MetaKeyWord")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("PageId");
-
-                    b.ToTable("TbPages");
-                });
 
             modelBuilder.Entity("Domains.TbSittings", b =>
                 {
@@ -149,7 +102,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TbSittings", (string)null);
+                    b.ToTable("TbSittings");
                 });
 
             modelBuilder.Entity("LapShop.Models.ApplicationUser", b =>
@@ -318,7 +271,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("TbCategories", (string)null);
+                    b.ToTable("TbCategories");
                 });
 
             modelBuilder.Entity("LapShop.Models.TbCustomer", b =>
@@ -336,7 +289,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("CustomerId");
 
-                    b.ToTable("TbCustomers", (string)null);
+                    b.ToTable("TbCustomers");
                 });
 
             modelBuilder.Entity("LapShop.Models.TbItem", b =>
@@ -428,7 +381,7 @@ namespace LapShop.Migrations
 
                     b.HasIndex(new[] { "OsId" }, "IX_TbItems_OsId");
 
-                    b.ToTable("TbItems", (string)null);
+                    b.ToTable("TbItems");
                 });
 
             modelBuilder.Entity("LapShop.Models.TbItemDiscount", b =>
@@ -475,7 +428,7 @@ namespace LapShop.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("TbItemImages", (string)null);
+                    b.ToTable("TbItemImages");
                 });
 
             modelBuilder.Entity("LapShop.Models.TbItemType", b =>
@@ -512,7 +465,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("ItemTypeId");
 
-                    b.ToTable("TbItemTypes", (string)null);
+                    b.ToTable("TbItemTypes");
                 });
 
             modelBuilder.Entity("LapShop.Models.TbO", b =>
@@ -553,7 +506,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("OsId");
 
-                    b.ToTable("TbOs", (string)null);
+                    b.ToTable("TbOs");
                 });
 
             modelBuilder.Entity("LapShop.Models.TbPurchaseInvoice", b =>
@@ -579,7 +532,7 @@ namespace LapShop.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("TbPurchaseInvoices", (string)null);
+                    b.ToTable("TbPurchaseInvoices");
                 });
 
             modelBuilder.Entity("LapShop.Models.TbPurchaseInvoiceItem", b =>
@@ -610,7 +563,7 @@ namespace LapShop.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("TbPurchaseInvoiceItems", (string)null);
+                    b.ToTable("TbPurchaseInvoiceItems");
                 });
 
             modelBuilder.Entity("LapShop.Models.TbSalesInvoice", b =>
@@ -658,7 +611,7 @@ namespace LapShop.Migrations
 
                     b.HasKey("InvoiceId");
 
-                    b.ToTable("TbSalesInvoices", (string)null);
+                    b.ToTable("TbSalesInvoices");
                 });
 
             modelBuilder.Entity("LapShop.Models.TbSalesInvoiceItem", b =>
@@ -692,7 +645,7 @@ namespace LapShop.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("TbSalesInvoiceItems", (string)null);
+                    b.ToTable("TbSalesInvoiceItems");
                 });
 
             modelBuilder.Entity("LapShop.Models.TbSlider", b =>
@@ -753,7 +706,7 @@ namespace LapShop.Migrations
                     b.HasKey("SupplierId")
                         .HasName("PK_TbSupplier");
 
-                    b.ToTable("TbSuppliers", (string)null);
+                    b.ToTable("TbSuppliers");
                 });
 
             modelBuilder.Entity("LapShop.Models.VwItem", b =>
