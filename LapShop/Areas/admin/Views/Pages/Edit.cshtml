@@ -1,0 +1,107 @@
+﻿@model TbPages
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Pages Edit </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Page Edit</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Default form</h4>
+                    <form class="forms-sample" method="post" enctype="multipart/form-data"
+                          asp-controller="Pages" asp-action="Save" role="form">
+                        <input asp-for="PageId" type="hidden" />
+                        <input asp-for="CreatedBy" type="hidden" />
+                        <input asp-for="CreatedDate" type="hidden" />
+
+                        <!--??-->
+                        <input asp-for="ImgName" type="hidden" />
+                        <input asp-for="CurrentState" type="hidden" />
+
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input asp-for="Title" type="text" class="form-control" placeholder="Enter Title">
+                            <span asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Meta Keyword</label>
+                            <input asp-for="MetaKeyWord" type="text" class="form-control" placeholder="Enter Title">
+                            <span asp-validation-for="MetaKeyWord"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Meta Description</label>
+                            <input asp-for="MetaDescription" type="text" class="form-control" placeholder="Enter metdiscription">
+                            <span asp-validation-for="MetaDescription"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Description</label>
+                            <input asp-for="Description" type="text" class="form-control" placeholder="Enter Description">
+                            <span asp-validation-for="Description"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Image">
+                                @ResAdmin.lblImage
+                            </label>
+                            <input type="file" name="Files"
+                                   class="form-control" placeholder="@ResAdmin.lblImage"
+                                   onchange="Upload.UploadDefaultImg(event)" accept=".jpg, .jpeg, .png, ,.gif">
+
+                        </div>
+
+
+                        <button type="submit" formmethod="post" class="btn btn-gradient-primary me-2">@ResGeneral.lblSave</button>
+                        <input type="reset" class="btn btn-light"></input>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-description">  Image Preview </p>
+                    <span id="tbImgName"></span>
+                    <div id="tbImgSrc">
+                        <img src="/Uploads/Pages/@Model.ImgName" style="width:100%; padding:2px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+
+    <!-- M_adding this file and adding [AutoValidateAntiforgeryToken] on save controller, means we activate client side validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- Custom js for this page -->
+    <script src="~/Admin/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+
+    <script>
+        var Upload = {
+            UploadDefaultImg: function (e) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    CourseMediaImgName = file.name;
+                    CourseMediaImgBase64 = reader.result.slice(reader.result.indexOf('base64,') + 7);
+                    $("#tbImgName").html(file.name)
+                    $("#tbImgSrc").html(`<img class="thumbnail" src = "${reader.result}"  style = "width: 100%;border-radius: 5px;border: 1px solid #d9d9d9;padding: 1px;" />`)
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+}
