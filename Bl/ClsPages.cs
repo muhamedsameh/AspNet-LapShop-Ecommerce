@@ -56,6 +56,7 @@ namespace Bl
             {
                 if (page.PageId == 0)
                 {
+                    page.CurrentState = 1;
                     page.CreatedBy = "Mo";
                     page.CreatedDate = DateTime.Now;
                     context.TbPages.Add(page);
