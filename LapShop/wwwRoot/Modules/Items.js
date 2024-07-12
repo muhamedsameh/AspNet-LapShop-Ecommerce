@@ -32,10 +32,11 @@
             <div class="product-box">
                 <div class="img-wrapper">
                     <div class="front">
-                        <a href="/ItemDetails/${item.itemId}"> <img src="/Uploads/Items/${item.imageName}" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                    </div>
-                    <div class="back">
-                        <a href="/ItemDetails/${item.itemId}"> <img src="/Uploads/Items/${item.imageName}" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                        <a href="ItemDetails/${item.itemId}"> 
+                            <img src="/Uploads/Items/${item.imageName}" 
+                            onerror="this.onerror=null; this.src='https://placehold.co/360x460'"
+                            class="img-fluid blur-up lazyload bg-img" alt="">
+                        </a>
                     </div>
                     <div class="cart-info cart-wrap">
                         <button data-toggle="modal" data-target="#addtocart" title="Add to cart">
@@ -44,9 +45,7 @@
                             <i class="ti-heart" aria-hidden="true"></i>
                         </a> <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View">
                             <i class="ti-search" aria-hidden="true"></i>
-                        </a> <a href="compare.html" title="Compare">
-                            <i class="ti-reload" aria-hidden="true"></i>
-                        </a>
+                        </a> 
                     </div>
                 </div>
                 <div class="product-detail">
